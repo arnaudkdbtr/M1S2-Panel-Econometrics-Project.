@@ -1,50 +1,48 @@
-# Analysis of Fatal Road Accidents in the United States (1982-1988)
+# Analyse des Accidents Mortels de la Route aux États-Unis (1982-1988)
 
-## 📌 Project Overview
+## 📌 Présentation du Projet
 
-This project aims to analyze the determinants of fatal road accidents in the United States using panel data from 1982 to 1988. The study explores socio-economic, policy, and behavioral factors influencing road mortality rates across 48 U.S. states. The objective is to provide insights that could help guide public policies to improve road safety.
+Ce projet vise à analyser les déterminants des accidents mortels de la route aux États-Unis en utilisant des données de panel couvrant la période 1982-1988. L’étude explore les facteurs socio-économiques, politiques et comportementaux influençant le taux de mortalité routière dans 48 États américains. L’objectif est d’apporter des éclairages pouvant guider les politiques publiques pour améliorer la sécurité routière.
 
-## 📊 Dataset
+## 📊 Jeu de Données
 
-The dataset comes from the `AER` package in R and is based on the *Fatalities* database, which contains annual panel data on U.S. traffic fatalities. The main sources include:
+Les données utilisées proviennent du package `AER` sous R et sont issues de la base *Fatalities*, qui contient des données de panel annuelles sur les accidents mortels de la route aux États-Unis. Les principales sources sont :
 
-- **Bureau of Economic Analysis (BEA)**
-- **National Highway Traffic Safety Administration (NHTSA)**
-- **Bureau of Labor Statistics (BLS)**
+- **Bureau of Economic Analysis (BEA)**  
+- **National Highway Traffic Safety Administration (NHTSA)**  
+- **Bureau of Labor Statistics (BLS)**  
 
-### Key Variables:
-- `fatalities`: Number of road fatalities per state-year.
-- `income`: Per capita income.
-- `unemp`: Unemployment rate.
-- `spirits`: Alcohol consumption per capita.
-- `beertax`: Beer tax (proxy for alcohol policies).
-- `miles`: Miles driven per capita (log-transformed).
-- `gsp`: Gross state product growth (log-transformed).
+### Variables Clés :
+- `fatalities` : Nombre de décès liés aux accidents de la route par État et par an.  
+- `income` : Revenu par habitant.  
+- `unemp` : Taux de chômage.  
+- `spirits` : Consommation d’alcool par habitant.  
+- `beertax` : Taxe sur la bière (proxy des politiques sur l’alcool).  
+- `miles` : Distance parcourue par habitant (transformée en logarithme).  
+- `gsp` : Croissance du produit intérieur brut de l’État (transformée en logarithme).  
 
-## 🏗 Methodology
+## 🏗 Méthodologie
 
-We apply panel data econometrics to estimate the impact of economic and behavioral factors on road fatalities. The following models are compared:
+Nous appliquons des techniques d’économétrie sur données de panel pour estimer l’impact des facteurs économiques et comportementaux sur la mortalité routière. Les modèles suivants sont comparés :
 
-1. **Pooled OLS**  
-2. **Fixed Effects Model (FE)**  
-3. **Random Effects Model (RE)**  
+1. **Modèle Pooled OLS**  
+2. **Modèle à Effets Fixes (FE)**  
+3. **Modèle à Effets Aléatoires (RE)**  
 
-### Model Specification:
+### Spécification du Modèle :
 
 log(fatal_it) = β₀ + β₁ income_it + β₂ unemp_it + β₃ spirits_it + β₄ beertax_it + β₅ log(miles_it) + β₆ log(gsp_it) + u_it
 
-### Model Selection:
+### Choix du Modèle :
 
-- **Fisher Test** confirms significant individual effects → Panel models are preferred over Pooled OLS.
-- **Hausman Test** rejects the exogeneity hypothesis → Fixed Effects model is more appropriate.
-- **Wooldridge Test** suggests autocorrelation in Pooled OLS and Random Effects models → Fixed Effects is preferred.
+- **Test de Fisher** confirme l’existence d’effets individuels significatifs → les modèles de panel sont préférés au modèle Pooled OLS.  
+- **Test de Hausman** rejette l’hypothèse d’exogénéité des effets individuels → le modèle à effets fixes est plus approprié.  
+- **Test de Wooldridge** détecte une autocorrélation dans les modèles Pooled OLS et à effets aléatoires → le modèle à effets fixes est privilégié.  
 
-## ⚙️ Implementation
+## ⚙️ Implémentation  
 
-The analysis is conducted in **R**, leveraging packages such as:
-- `plm` (panel data modeling)
-- `lmtest` (diagnostic tests)
-- `car` (statistical tests)
-- `stargazer` (formatted output tables)
-
-
+L’analyse est réalisée en **R**, en utilisant les packages suivants :  
+- `plm` (modélisation sur données de panel)  
+- `lmtest` (tests de diagnostic)  
+- `car` (tests statistiques)  
+- `stargazer` (tableaux de résultats formatés)  
