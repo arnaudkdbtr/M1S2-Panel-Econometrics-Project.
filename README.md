@@ -31,9 +31,7 @@ We apply panel data econometrics to estimate the impact of economic and behavior
 
 ### Model Specification:
 
-\[
-\log(fatal_{it}) = \beta_0 + \beta_1 income_{it} + \beta_2 unemp_{it} + \beta_3 spirits_{it} + \beta_4 beertax_{it} + \beta_5 \log(miles_{it}) + \beta_6 \log(gsp_{it}) + u_{it}
-\]
+log(fatal_it) = β₀ + β₁ income_it + β₂ unemp_it + β₃ spirits_it + β₄ beertax_it + β₅ log(miles_it) + β₆ log(gsp_it) + u_it
 
 ### Model Selection:
 
