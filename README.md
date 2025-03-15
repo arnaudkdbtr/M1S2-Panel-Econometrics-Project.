@@ -1,61 +1,61 @@
-# Analyse des Déterminants Macroéconomiques du Déficit Public en France
+# Analyse des Accidents Mortels de la Route aux États-Unis (1982-1988)
 
 ## 📌 Présentation du Projet
 
-Ce projet vise à analyser les principaux déterminants macroéconomiques influençant le déficit public en France au cours des 20 dernières années. En utilisant des données issues d’**Eurostat**, nous explorons l’impact de variables économiques telles que le taux de chômage, le taux d’épargne des ménages, le taux d’inflation, le taux de change effectif, les recettes fiscales nettes et le PIB sur l’évolution du déficit public.
-
-L’objectif est d’apporter des éléments d’analyse pouvant éclairer les décisions de politique économique en matière de gestion budgétaire.
+Ce projet vise à analyser les déterminants des accidents mortels de la route aux États-Unis en utilisant des données de panel couvrant la période 1982-1988. L’étude explore les facteurs socio-économiques, politiques et comportementaux influençant le taux de mortalité routière dans 48 États américains. L’objectif est d’apporter des éclairages pouvant guider les politiques publiques pour améliorer la sécurité routière.
 
 ## 📊 Jeu de Données
 
-Les données utilisées proviennent de **Eurostat** et couvrent la période **2003-2023**.  
-### Principales variables :
-- `Government.surplus.or.deficit` : Déficit/excédent public (% du PIB)
-- `NetTaxReceipts` : Recettes fiscales nettes (% du PIB)
-- `Unemployment.Rate` : Taux de chômage (en %)
-- `Household.saving.rate` : Taux d’épargne des ménages (en %)
-- `InflationRate` : Taux d’inflation (IPC, en %)
-- `effective.exchange.rate` : Taux de change effectif des pays industrialisés
-- `GDP` : Croissance du PIB (en %)
+Les données utilisées proviennent du package AER sous R et sont issues de la base Fatalities, qui contient des données de panel annuelles sur les accidents mortels de la route aux États-Unis. Les principales sources sont :
+
+- Bureau of Economic Analysis (BEA)
+- National Highway Traffic Safety Administration (NHTSA)
+- Bureau of Labor Statistics (BLS)
+
+### Variables Clés :
+- `fatalities` : Nombre de décès liés aux accidents de la route par État et par an.
+- `income` : Revenu par habitant.
+- `unemp` : Taux de chômage.
+- `spirits` : Consommation d’alcool par habitant.
+- `beertax` : Taxe sur la bière (proxy des politiques sur l’alcool).
+- `miles` : Distance parcourue par habitant (transformée en logarithme).
+- `gsp` : Croissance du produit intérieur brut de l’État (transformée en logarithme).
 
 ## 🏗 Méthodologie
 
-Nous utilisons un **modèle de régression linéaire multiple** pour estimer l’influence des différentes variables sur le déficit public.
+Nous appliquons des techniques d’économétrie sur données de panel pour estimer l’impact des facteurs économiques et comportementaux sur la mortalité routière. Les modèles suivants sont comparés :
 
-### Spécification du modèle :
+- Modèle Pooled OLS
+- Modèle à Effets Fixes (FE)
+- Modèle à Effets Aléatoires (RE)
 
-Government.surplus.or.deficit = β₀ + β₁ Unemployment.Rate + β₂ Household.saving.rate + β₃ effective.exchange.rate + β₄ NetTaxReceipts + β₅ GDP + β₆ InflationRate + u_t
+### Spécification du Modèle :
 
-### Principaux Résultats :
-- **Le taux de chômage et le taux d’épargne des ménages ont un impact négatif et significatif** sur le déficit public.
-- **Les recettes fiscales nettes et le taux de change effectif réduisent le déficit**, indiquant leur importance dans l’équilibre budgétaire.
-- **Le PIB a un effet positif modéré**, tandis que l’inflation n’a pas d’effet significatif sur le déficit public.
+log(fatal_it) = β₀ + β₁ income_it + β₂ unemp_it + β₃ spirits_it + β₄ beertax_it + β₅ log(miles_it) + β₆ log(gsp_it) + u_it
 
 ### Choix du Modèle :
-- **Test de multicolinéarité (VIF)** : Pas de problème majeur détecté.
-- **Test de Breusch-Pagan** : Pas d’hétéroscédasticité significative.
-- **Test RESET de Ramsey** : Pas de problème de spécification du modèle.
-- **Test de Durbin-Watson** : Pas d’autocorrélation des résidus.
-- **Test de Shapiro-Wilk** : Normalité des résidus validée.
+- **Test de Fisher** confirme l’existence d’effets individuels significatifs → les modèles de panel sont préférés au modèle Pooled OLS.
+- **Test de Hausman** rejette l’hypothèse d’exogénéité des effets individuels → le modèle à effets fixes est plus approprié.
+- **Test de Wooldridge** détecte une autocorrélation dans les modèles Pooled OLS et à effets aléatoires → le modèle à effets fixes est privilégié.
 
 ## ⚙️ Implémentation
 
-L’analyse est réalisée sous **R**, en utilisant les packages suivants :
-- `ggplot2` (visualisation des tendances)
-- `lmtest` (tests statistiques)
-- `car` (analyse de la multicolinéarité)
-- `stargazer` (génération de tableaux)
+L’analyse est réalisée en **R**, en utilisant les packages suivants :
+- `plm` (modélisation sur données de panel)
+- `lmtest` (tests de diagnostic)
+- `car` (tests statistiques)
+- `stargazer` (tableaux de résultats formatés)
 
 ## 📂 Accédez aux fichiers
 
-- [Dossier PDF final du projet](Dossier-PDF-Markdown.pdf)  
-  Ce lien vous redirigera vers le document PDF détaillant les résultats finaux du projet.
+- [Dossier PDF final du projet](PDF_KINDBEITER_Arnaud_M1_DS2E.pdf)  
+  Ce lien vous redirigera vers le document PDF détaillant les résultats finaux du projet. Le dossier final a été réalisé en utilisant **LaTeX**.
   
-- [Code R utilisé dans l’analyse](R-Code)  
+- [Code R utilisé dans l’analyse](R-CODE)  
   Vous pouvez explorer le code source du projet dans ce dossier pour plus de détails sur l'implémentation.
 
 ## Auteurs
 
 - ZELLER Emile
 - HOBBALLAH Rayan
-- Arnaud KINDBEITER
+- **Arnaud KINDBEITER**
