@@ -56,6 +56,4 @@ L’analyse est réalisée en **R**, en utilisant les packages suivants :
 
 ## Auteurs
 
-- ZELLER Emile
-- HOBBALLAH Rayan
-- **Arnaud KINDBEITER**
+- Arnaud KINDBEITER
