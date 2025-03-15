@@ -1,4 +1,4 @@
-# Analyse des Accidents Mortels de la Route aux États-Unis (1982-1988)
+# Analyse des déterminants des accidents mortels de la route aux États-Unis (1982-1988)
 
 ## 📌 Présentation du Projet
 
