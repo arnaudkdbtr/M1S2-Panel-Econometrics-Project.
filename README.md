@@ -1,3 +1,8 @@
+![R Version](https://img.shields.io/badge/R-4.0%2B-blue)
+![Panel Data](https://img.shields.io/badge/Analyse-Donn%C3%A9es%20Panel-brightgreen)
+![Framework](https://img.shields.io/badge/M%C3%A9thode-Econom%C3%A9trie-orange)
+![Documentation](https://img.shields.io/badge/Documentation-LaTeX-lightgrey)
+
 # Analyse des déterminants des accidents mortels de la route aux États-Unis (1982-1988)
 
 ## 📌 Présentation du Projet
